@@ -11,15 +11,21 @@ The subset of brackets enclosed within the confines of a matched pair of bracket
 Given  strings of brackets, determine whether each sequence of brackets is balanced. If a string is balanced, return YES. Otherwise, return NO.'''
 
 
-mapping = {'}':'{' , ')':'(' , ']':'['}
+def isBalanced(s):
+    # Write your code here
+    mapping = {'}':'{' , ')':'(' , ']':'['}
     stack = []
     for char in s:
-        if char in '({[':
+        if char in ['(', '{', '[']:
             stack.append(char)
             
-        elif char in ')}]':
-            if not stack or stack[-1]  != mapping[char]:
+        elif char in [')', '}', ']']:
+            if stack:
+                top = stack.pop()
+                if top != mapping[char]:
+                    return 'NO'
+                
+            else:
                 return 'NO'
-            stack.pop()
             
-    return 'YES'
+    return 'NO' if stack else 'YES'
