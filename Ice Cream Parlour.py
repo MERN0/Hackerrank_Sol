@@ -7,8 +7,8 @@ def icecreamParlor(m, arr):
     # Write your code here
     res=[]
     n=len(arr)
-    for i in range(n-1, -1, -1):
-        if i<m:
+    for i in range(n-1, 0, -1):
+        if arr[i]<m:
             for j in range(i):
                 if arr[i] + arr[j] == m:
                     res = [j+1, i+1]
